@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <script>
+        function quest0() {
+            var time = prompt("초 단위의 시간을 입력하세요");
+            min = parseInt(time/60);
+            sec = time % 60;
+            message = min + " 분 " + sec + " 초입니다.";
+            return message;
+        }
+
+        function quest1() {
+            var x1 = prompt("첫 번째 점의 x좌료를 입력하세요");
+            var y1 = prompt("첫 번째 점의 y좌료를 입력하세요");
+            var x2 = prompt("두 번째 점의 x좌료를 입력하세요");
+            var y2 = prompt("두 번째 점의 y좌료를 입력하세요");
+            var p1 = {x: x1, y: y1};
+            var p2 = {x: x2, y: y2};
+            
+            let distance = getDist(p1, p2);
+            console.log(distance);           
+        }
+
+        function getDist(p1, p2) {
+            console.log("Getting distance using getDist() func");
+            return Math.sqrt(Math.pow(p1.x-p2.x,2)+Math.pow(p1.y-p2.y,2));
+            }
+
+        function quest2(str) {  
+            str = str.toUpperCase();
+            return str;            
+            }
+
+        function quest3() {
+            var num1 = prompt("첫 번째 숫자를 입력하세요");
+            var oper = prompt("연산자를 입력하세요");
+            var num2 = prompt("두 번째 숫자를 입력하세요");
+
+            num1 = parseInt(num1);
+            num2 = parseInt(num2);
+
+            var answer = operate(num1, oper, num2); // 반드시 이 코드를 사용하세요
+            console.log("정답은 %d입니다.", answer);
+        }
+
+        function operate(x, oper, y) { // 반드시 이 함수를 이용하여 연산 결과를 계산하세요
+
+            switch (oper) {
+                case '+':
+                    return x + y;
+                case '-':
+                    return x - y;
+                case '*':
+                    return x * y;
+                case '/':
+                    return x / y;
+                case '%':
+                    return x % y;
+            }
+        }
+            
+        function quest4(){
+            var rsp = prompt("가위 바위 보!");
+            var rand = Math.random();
+            rand = parseFloat(rand);
+
+            if (rand <= 0.3333){
+                computer = "바위";
+            }else if (rand <= 0.6666){
+                computer = "기위";
+            }else {
+                computer = "보";
+            }; //컴퓨터 가위바위보 설정
+
+            console.log("컴퓨터 :", computer);
+
+            if (rsp == "가위"){
+                if (computer == "가위"){
+                    console.log("무승부!");
+                }else if (computer == "바위"){
+                    console.log("컴퓨터 승!");
+                }else if (computer == "보"){
+                    console.log("사용자 승!");
+                }
+            }
+            if (rsp == "바위"){
+                if (computer == "바위"){
+                    console.log("무승부!");
+                }else if (computer == "보"){
+                    console.log("컴퓨터 승!");
+                }else if (computer == "가위"){
+                    console.log("사용자 승!");
+                }
+            }
+            if (rsp == "보"){
+                if (computer == "보"){
+                    console.log("무승부!");
+                }else if (computer == "가위"){
+                    console.log("컴퓨터 승!");
+                }else if (computer == "바위"){
+                    console.log("사용자 승!");
+                }
+            }        
+        }
+
+        function quest5() {
+            str = prompt('문자열을 입력하세요');
+            console.log(myReverse(str));
+        }
+
+
+        function myReverse(str) {
+            var str_blank = "";
+            str_len = str.length;
+            index = str_len;
+
+            while( index >= 0){
+                index = index - 1;
+                str.charAt(index);
+                str_blank = str_blank + str.charAt(index);
+            }
+            return str_blank;
+        }
+
+        function quest6(){
+            num = 1;
+
+            while( num >= 0){
+                var num = prompt("숫자를 입력하세요.");
+                num = parseInt(num);
+    
+                if (num >= 0 && (num % 2) == 0){
+
+                }else if (num >= 0){
+                    console.log(num + "을 입력하셨네요");
+                }
+            }
+            console.log("끝!")
+        }
+
+        function quest7(){
+            var nickname = ""
+            var sentence = prompt("문자열을 입력해주세요.");
+            var words = sentence.split(" ");
+            len = words.length;
+            index = 0;
+
+            while ( index < len ){
+                if (words[index].charAt(0) == (words[index].charAt(0)).toUpperCase()){
+                    nickname = nickname + words[index].charAt(0);
+                }
+                index = index + 1;
+                }
+            return nickname
+        }
+
+        let testStr = 'My name is mymy. Your name is youryour. His name is hishis. Her name is herher. So, my, your, his, her, name will be mymyyouryourhishisherehr.';
+
+        function quest8(sen){
+            var index = 0;
+            sen = sen.replace(/\./gi, '');
+            sen = sen.replace(/\,/gi, '');
+            sen = sen.split(' ');
+            sen = sen.sort();
+            const set = new Set(sen);
+            const unique = [...set];
+
+            while ( index < unique.length){
+                console.log(unique[index]);
+                index = index + 1;
+            }
+        }
+
+        let longStr = "Computer engineering has been rapidly changed than any other academic disciplines; these changes are immediately reflected in the industrial field.";
+        // 위 변수를 이용하여 quest9()함수를 실행하세요
+
+        function quest9(input_sen){
+            var obj = {};   
+            input_sen = input_sen.replace(/\./gi, '');
+            input_sen = input_sen.replace(/\;/gi, '');
+            input_sen = input_sen.replace(/\s/gi, '');
+            // input_sen = input_sen.toLowerCase(); 
+            input_sen = input_sen.split('');
+            const set = new Set(input_sen);
+            const unique = [...set];
+
+            unique.forEach(element => {
+                obj[element] = 0;
+                
+            });
+            unique.forEach(element => { 
+                input_sen.forEach(element1 => {
+                    if(element1 == element){
+                        obj[element] = obj[element] + 1;
+                    }
+                }) 
+            });
+            unique.forEach(element => {
+                console.log(element, obj[element]);
+            })
+}   
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
